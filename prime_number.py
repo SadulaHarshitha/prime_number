@@ -19,7 +19,7 @@ def is_prime():
 		      have_factors=true
 		      break
         
-     if(!have_factors)
+     if(have_factors==false)
 	     return render_template(prime.html)	
 
   else:
