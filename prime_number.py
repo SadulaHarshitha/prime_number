@@ -1,29 +1,26 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-@app.route('/', method=['GET'])
+@app.route('/')
 def input():
-  if request.method == 'GET':
-  return render_template(input.html)
+        return render_template('input.html')
 
-@app.route("/submit", methods = ["POST"])
-
+@app.route('/submit', methods=['POST'])
 def is_prime():
-  if request.method == "POST"
-  num=request.form['number']
-  have_factors=false
-  if num>1:
-     for divisor in range(2,(num**0.5)+1):
-	      if (num%divisor)==0 :
-		      return render_template(non_prime.html)	
-		      have_factors=true
-		      break
+    num=request.form['number']
+    k=0
+    if num>1:
+        for divisor in range(2,(num**0.5)+1):
+            if((num%divisor)==0):	
+                k=1
+                return render_template(non_prime.html)
+                break
         
-     if(have_factors==false)
-	     return render_template(prime.html)	
+        if(k==0):
+            return render_template('prime.html')	
 
-  else:
-    return render_template(non_prime.html)	
+    else:
+        return render_template('non_prime.html')	
   
-if __name__ == '__main__'
-    app.run(debud=True)
+if __name__ == '__main__': 
+    app.run(debug=True, host='0.0.0.0')
