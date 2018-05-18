@@ -7,16 +7,15 @@ def input():
 
 @app.route('/submit', methods=['POST'])
 def is_prime():
-    num=request.form['number']
-    k=0
+    num=int(request.form['number'])
+    have_factors=False
     if num>1:
-        for divisor in range(2,(num**0.5)+1):
+        for divisor in range(2,int(num**0.5)+1):
             if((num%divisor)==0):	
-                k=1
-                return render_template(non_prime.html)
+                return render_template('non_prime.html')
                 break
         
-        if(k==0):
+        if(have_factors=False):
             return render_template('prime.html')	
 
     else:
